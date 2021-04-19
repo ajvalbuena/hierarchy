@@ -7,7 +7,7 @@ about who their boss is. Can you help her?
 
 #### Fatima’s initial requirements were the following:
 
-1. I would like a pure REST API to post the JSON fromChris. 
+1. I would like a pure REST API to post the JSON from Chris. 
 This JSON represents an Employee ->Supervisor relationship that looks like this:
     ```
     {
@@ -49,7 +49,7 @@ This JSON represents an Employee ->Supervisor relationship that looks like this:
     detailed the error messages are, the better!
     
  3. I would really like it if the hierarchy could be stored
-    in a relational database (e.g. SQLite) and
+    in a relational database and
     queried to get the supervisor and the supervisor’s 
     supervisor of a given employee. I want to send 
     the name of an employee to an endpoint, and receive 
