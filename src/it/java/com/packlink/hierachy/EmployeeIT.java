@@ -13,15 +13,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class EmployeeHierachyIT {
+public class EmployeeIT {
     @Autowired
     private MockMvc mvc;
 
     @Test
     public void emptyEmployeehierachy() throws Exception {
         mvc.perform(
-                MockMvcRequestBuilders.post("/hierachy").content("{}").accept(MediaType.APPLICATION_JSON))
+                MockMvcRequestBuilders.post("/hierachy").content("{}").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string("{}"));
+    }
+
+    @Test
+    public void oneEmployeeWithSupervisor() throws Exception {
+        mvc.perform(
+                MockMvcRequestBuilders.post("/hierachy").content("{\"Pete\":\"Barbara\"}").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string("{\"Barbara\":{\"Pete\": {}}}"));
     }
 }
