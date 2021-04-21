@@ -11,6 +11,6 @@ public class DefaultHierachyUseCaseTest {
     @Test
     public void emptyEmployees(){
         DefaultHierachyUseCase hierachyUseCase = new DefaultHierachyUseCase();
-        assertThat(hierachyUseCase.buildHierachy(new ArrayList<EmployeeSupervisor>()), is(new Hierachy()));
+        assertThat(hierachyUseCase.buildHierachy(new ArrayList<>()), is(new Hierachy(new ArrayList<>())));
     }
 }

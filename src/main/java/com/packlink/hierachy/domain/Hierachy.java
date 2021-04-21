@@ -1,6 +1,15 @@
 package com.packlink.hierachy.domain;
 
+import java.util.List;
+
 public class Hierachy {
+
+    private final List<EmployeeSupervisor> employeeSupervisors;
+
+    public Hierachy(List<EmployeeSupervisor> employeeSupervisors) {
+
+        this.employeeSupervisors = employeeSupervisors;
+    }
 
     @Override
     public int hashCode() {
@@ -10,5 +19,9 @@ public class Hierachy {
     @Override
     public boolean equals(Object obj) {
         return true;
+    }
+
+    public boolean isEmpty() {
+        return employeeSupervisors.isEmpty();
     }
 }
