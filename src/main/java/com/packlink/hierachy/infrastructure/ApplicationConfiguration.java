@@ -6,9 +6,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class HierachyConfiguration {
+public class ApplicationConfiguration {
     @Bean
     public HierachyUseCase hierachyUseCase(){
         return new DefaultHierachyUseCase();
     }
+    @Bean
+    public EmployeeSupervisorParser employeeSupervisorParser() { return new EmployeeSupervisorParser(); }
 }
