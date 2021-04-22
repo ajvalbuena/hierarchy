@@ -1,5 +1,6 @@
 package com.packlink.hierachy.domain;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Hierachy {
@@ -23,5 +24,9 @@ public class Hierachy {
 
     public boolean isEmpty() {
         return employeeSupervisors.isEmpty();
+    }
+
+    public Employee root() {
+        return new Employee("Barbara", Arrays.asList(new Employee("Peter")));
     }
 }
