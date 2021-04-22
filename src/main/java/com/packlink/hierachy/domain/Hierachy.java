@@ -8,7 +8,6 @@ public class Hierachy {
     private final List<EmployeeSupervisor> employeeSupervisors;
 
     public Hierachy(List<EmployeeSupervisor> employeeSupervisors) {
-
         this.employeeSupervisors = employeeSupervisors;
     }
 
@@ -27,6 +26,6 @@ public class Hierachy {
     }
 
     public Employee root() {
-        return new Employee("Barbara", Arrays.asList(new Employee("Peter")));
+        return new Employee(employeeSupervisors.get(0).getSupervisor(), Arrays.asList(new Employee(employeeSupervisors.get(0).getName())));
     }
 }

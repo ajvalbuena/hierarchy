@@ -8,4 +8,12 @@ public class EmployeeSupervisor {
         this.name = name;
         this.supervisor = supervisor;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSupervisor() {
+        return supervisor;
+    }
 }
