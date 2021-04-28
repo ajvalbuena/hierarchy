@@ -17,6 +17,16 @@ public class Employee {
         this(name, new ArrayList<>());
     }
 
+    public Employee find(String name) {
+        if (this.name == name) return this;
+        Employee employeeFound;
+        for (Employee employee : employees) {
+            employeeFound = employee.find(name);
+            if (employeeFound != null) return employeeFound;
+        }
+        return null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

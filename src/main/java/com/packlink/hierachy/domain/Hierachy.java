@@ -38,4 +38,5 @@ public class Hierachy {
 
         return new Employee(employeeSupervisors.get(0).getSupervisor(), employeeList);
     }
+
 }
