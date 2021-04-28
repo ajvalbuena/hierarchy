@@ -1,5 +1,6 @@
 package com.packlink.hierachy.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,6 +27,12 @@ public class Hierachy {
     }
 
     public Employee root() {
-        return new Employee(employeeSupervisors.get(0).getSupervisor(), Arrays.asList(new Employee(employeeSupervisors.get(0).getName())));
+        List<Employee> employeeList = new ArrayList<>();
+        employeeList.add( new Employee(employeeSupervisors.get(0).getName()));
+        if(employeeSupervisors.size() > 1){
+            employeeList.add(new Employee(employeeSupervisors.get(1).getName()));
+        }
+
+        return new Employee(employeeSupervisors.get(0).getSupervisor(), employeeList);
     }
 }

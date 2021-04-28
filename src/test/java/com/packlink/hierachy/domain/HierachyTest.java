@@ -21,4 +21,17 @@ class HierachyTest {
 
         assertThat(hierarchy.root(), is(new Employee("Roberto", Arrays.asList(new Employee("Patri")))));
     }
+
+    @Test
+    public void twoDifferentEmployeesOneSupervisor() {
+        Hierachy hierarchy = new Hierachy(Arrays.asList(
+                new EmployeeSupervisor("Patri", "Roberto"),
+                new EmployeeSupervisor("Peter", "Roberto")
+        ));
+
+        assertThat(hierarchy.root(), is(
+                new Employee("Roberto", Arrays.asList(
+                        new Employee("Patri"),
+                        new Employee("Peter")))));
+    }
 }
