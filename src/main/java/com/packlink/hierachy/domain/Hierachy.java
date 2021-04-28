@@ -26,11 +26,14 @@ public class Hierachy {
         return employeeSupervisors.isEmpty();
     }
 
-    public Employee root() {
+    public Employee display() {
         List<Employee> employeeList = new ArrayList<>();
         employeeList.add( new Employee(employeeSupervisors.get(0).getName()));
-        if(employeeSupervisors.size() > 1){
+        if(employeeSupervisors.size() == 2){
             employeeList.add(new Employee(employeeSupervisors.get(1).getName()));
+        }else if (employeeSupervisors.size() > 2){
+            Employee newEmployee = new Employee(employeeSupervisors.get(2).getName());
+            employeeList.add(new Employee(employeeSupervisors.get(1).getName(), Arrays.asList(newEmployee)));
         }
 
         return new Employee(employeeSupervisors.get(0).getSupervisor(), employeeList);

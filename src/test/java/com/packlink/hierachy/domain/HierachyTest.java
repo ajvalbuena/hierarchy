@@ -12,14 +12,14 @@ class HierachyTest {
     public void onlyTwoEmployee() {
         Hierachy hierarchy = new Hierachy(Arrays.asList(new EmployeeSupervisor("Peter", "Barbara")));
 
-        assertThat(hierarchy.root(), is(new Employee("Barbara", Arrays.asList(new Employee("Peter")))));
+        assertThat(hierarchy.display(), is(new Employee("Barbara", Arrays.asList(new Employee("Peter")))));
     }
 
     @Test
     public void twoDifferentEmployees() {
         Hierachy hierarchy = new Hierachy(Arrays.asList(new EmployeeSupervisor("Patri", "Roberto")));
 
-        assertThat(hierarchy.root(), is(new Employee("Roberto", Arrays.asList(new Employee("Patri")))));
+        assertThat(hierarchy.display(), is(new Employee("Roberto", Arrays.asList(new Employee("Patri")))));
     }
 
     @Test
@@ -29,9 +29,24 @@ class HierachyTest {
                 new EmployeeSupervisor("Peter", "Roberto")
         ));
 
-        assertThat(hierarchy.root(), is(
+        assertThat(hierarchy.display(), is(
                 new Employee("Roberto", Arrays.asList(
                         new Employee("Patri"),
                         new Employee("Peter")))));
     }
+
+    @Test
+    public void twoSupervisorsThreeEmployees() {
+        Hierachy hierarchy = new Hierachy(Arrays.asList(
+                new EmployeeSupervisor("Patri", "Roberto"),
+                new EmployeeSupervisor("Peter", "Roberto"),
+                new EmployeeSupervisor("Laura", "Peter")
+        ));
+
+        assertThat(hierarchy.display(), is(
+                new Employee("Roberto", Arrays.asList(
+                        new Employee("Patri"),
+                        new Employee("Peter", Arrays.asList(new Employee("Laura")))))));
+    }
+
 }
