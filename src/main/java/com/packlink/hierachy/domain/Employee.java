@@ -3,6 +3,7 @@ package com.packlink.hierachy.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class Employee {
     private final String name;
@@ -17,14 +18,13 @@ public class Employee {
         this(name, new ArrayList<>());
     }
 
-    public Employee find(String name) {
-        if (this.name == name) return this;
-        Employee employeeFound;
-        for (Employee employee : employees) {
-            employeeFound = employee.find(name);
-            if (employeeFound != null) return employeeFound;
-        }
-        return null;
+    public Optional<Employee> find(String name) {
+        if (this.name.equals(name)) return Optional.of(this);
+        return employees.stream()
+                .map(e -> e.find(name))
+                .filter(Optional::isPresent)
+                .findFirst()
+                .map(Optional::get);
     }
 
     @Override
