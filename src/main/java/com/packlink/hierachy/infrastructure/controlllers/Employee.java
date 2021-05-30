@@ -31,4 +31,9 @@ public class Employee {
     public String getHierarchy(){
         return "{\"Barbara\":{\"Pete\": {}}}";
     }
+
+    @GetMapping("/")
+    public String general(){
+        return "{\"Barbara\":{\"Pete\": {}}}";
+    }
 }
