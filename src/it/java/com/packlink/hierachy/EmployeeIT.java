@@ -18,9 +18,9 @@ public class EmployeeIT {
     private MockMvc mvc;
 
     @Test
-    public void emptyEmployeehierachy() throws Exception {
+    public void emptyEmployeeHierarchy() throws Exception {
         mvc.perform(
-                MockMvcRequestBuilders.post("/hierachy").content("{}").contentType(MediaType.APPLICATION_JSON))
+                MockMvcRequestBuilders.post("/hierarchy").content("{}").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string("{}"));
     }
@@ -28,7 +28,7 @@ public class EmployeeIT {
     @Test
     public void oneEmployeeWithSupervisor() throws Exception {
         mvc.perform(
-                MockMvcRequestBuilders.post("/hierachy").content("{\"Pete\":\"Barbara\"}").contentType(MediaType.APPLICATION_JSON))
+                MockMvcRequestBuilders.post("/hierarchy").content("{\"Pete\":\"Barbara\"}").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string("{\"Barbara\":{\"Pete\": {}}}"));
     }
