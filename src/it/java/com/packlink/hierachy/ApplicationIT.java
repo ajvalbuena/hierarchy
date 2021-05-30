@@ -19,7 +19,7 @@ public class ApplicationIT {
 
     @Test
     public void dummyIT() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/dummy").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
 }

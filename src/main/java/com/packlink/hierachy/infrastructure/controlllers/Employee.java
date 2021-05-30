@@ -27,7 +27,7 @@ public class Employee {
         return hierarchyEncoder.toJson(useCase.buildHierarchy(employeeSupervisorParser.toEmployeeSupervisor(hierarchy)));
     }
 
-    @GetMapping("/test")
+    @GetMapping("/")
     public String getHierarchy(){
         return "{\"Barbara\":{\"Pete\": {}}}";
     }
