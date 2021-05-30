@@ -32,8 +32,4 @@ public class Employee {
         return "{\"Barbara\":{\"Pete\": {}}}";
     }
 
-    @GetMapping("/")
-    public String general(){
-        return "{\"Barbara\":{\"Pete\": {}}}";
-    }
 }
