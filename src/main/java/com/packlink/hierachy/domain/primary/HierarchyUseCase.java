@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface HierarchyUseCase {
 
-    Hierarchy buildHierarchy(List<EmployeeSupervisor> employeeSupervisors);
+    List<Hierarchy> buildHierarchy(List<EmployeeSupervisor> employeeSupervisors);
 }

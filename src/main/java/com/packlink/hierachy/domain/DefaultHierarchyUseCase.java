@@ -7,7 +7,7 @@ import java.util.List;
 public class DefaultHierarchyUseCase implements HierarchyUseCase {
 
     @Override
-    public Hierarchy buildHierarchy(List<EmployeeSupervisor> employeeSupervisors) {
-        return new Hierarchy(employeeSupervisors);
+    public List<Hierarchy> buildHierarchy(List<EmployeeSupervisor> employeeSupervisors) {
+        return Hierarchy.findHierarchy(employeeSupervisors);
     }
 }

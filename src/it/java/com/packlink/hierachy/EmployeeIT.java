@@ -30,6 +30,6 @@ public class EmployeeIT {
         mvc.perform(
                 MockMvcRequestBuilders.post("/hierarchy").content("{\"Pete\":\"Barbara\"}").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string("{\"Barbara\":{\"Pete\": {}}}"));
+                .andExpect(content().string("{\"Barbara\":{\"Pete\":{}}}"));
     }
 }

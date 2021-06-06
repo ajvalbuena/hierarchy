@@ -2,15 +2,36 @@ package com.packlink.hierachy.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Hierarchy {
 
-    private final List<EmployeeSupervisor> employeeSupervisors;
+    private final String boss;
 
-    public Hierarchy(List<EmployeeSupervisor> employeeSupervisors) {
-        this.employeeSupervisors = employeeSupervisors;
+    private final List<Hierarchy> employees;
+
+    public Hierarchy(String boss, List<Hierarchy> employees) {
+        this.boss = boss;
+        this.employees = employees;
     }
+
+
+    public static List<Hierarchy> findHierarchy (List<EmployeeSupervisor> inputList){
+        if(inputList.isEmpty()) return Collections.emptyList();
+        EmployeeSupervisor employeeSupervisor = inputList.get(0);
+        return Arrays.asList(new Hierarchy(employeeSupervisor.getSupervisor(),
+                Arrays.asList(new Hierarchy(employeeSupervisor.getName(), Collections.emptyList()))));
+    }
+
+    public String getBoss() {
+        return boss;
+    }
+
+    public List<Hierarchy> getEmployees() {
+        return employees;
+    }
+
 
     @Override
     public int hashCode() {
@@ -18,13 +39,19 @@ public class Hierarchy {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return true;
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Hierarchy))
+            return false;
+        Hierarchy other = (Hierarchy) o;
+        boolean bossEquals = (this.boss == null && other.boss == null)
+                || (this.boss != null && this.boss.equals(other.boss));
+        boolean employeesEquals = (this.employees.isEmpty() && other.employees.isEmpty())
+                || (!this.employees.isEmpty() && this.employees.equals(other.employees));
+        return employeesEquals && bossEquals;
     }
 
-    public boolean isEmpty() {
-        return employeeSupervisors.isEmpty();
-    }
 
 
 }
