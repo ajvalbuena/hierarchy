@@ -17,13 +17,6 @@ public class Hierarchy {
     }
 
 
-    public static List<Hierarchy> findHierarchy (List<EmployeeSupervisor> inputList){
-        if(inputList.isEmpty()) return Collections.emptyList();
-        EmployeeSupervisor employeeSupervisor = inputList.get(0);
-        return Arrays.asList(new Hierarchy(employeeSupervisor.getSupervisor(),
-                Arrays.asList(new Hierarchy(employeeSupervisor.getName(), Collections.emptyList()))));
-    }
-
     public String getBoss() {
         return boss;
     }

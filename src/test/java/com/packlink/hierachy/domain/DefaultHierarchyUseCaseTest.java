@@ -15,14 +15,14 @@ public class DefaultHierarchyUseCaseTest {
     @Test
     public void emptyHierarchy() {
         List<EmployeeSupervisor> input = Collections.emptyList();
-        assertEquals(useCase.buildHierarchy(input), Collections.emptyList());
+        assertEquals(useCase.getHierarchy(input), Collections.emptyList());
     }
 
     @Test
     public void onePairOfEmployeeSupervisor() {
         List<EmployeeSupervisor> input = Arrays.asList(new EmployeeSupervisor("Pepe", "Antonio"));
         Hierarchy finalHierarchy = new Hierarchy("Antonio", Arrays.asList(new Hierarchy("Pepe", Collections.emptyList())));
-        assertEquals(useCase.buildHierarchy(input), Arrays.asList(finalHierarchy));
+        assertEquals(useCase.getHierarchy(input), Arrays.asList(finalHierarchy));
     }
 
     @Test

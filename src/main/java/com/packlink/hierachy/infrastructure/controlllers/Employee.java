@@ -24,7 +24,7 @@ public class Employee {
 
     @PostMapping("/hierarchy")
     public String create(@RequestBody Map<String, String> hierarchy){
-        return hierarchyEncoder.toJson(useCase.buildHierarchy(employeeSupervisorParser.toEmployeeSupervisor(hierarchy)));
+        return hierarchyEncoder.toJson(useCase.getHierarchy(employeeSupervisorParser.toEmployeeSupervisor(hierarchy)));
     }
 
     @GetMapping("/")

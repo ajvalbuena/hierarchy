@@ -10,7 +10,6 @@ public class HierarchyEncoder {
         Hierarchy firstHierarchy = hierarchy.get(0);
         String supervisor = firstHierarchy.getBoss();
         String employee = firstHierarchy.getEmployees().get(0).getBoss();
-//        return "{\"Barbara\":{\"Pete\": {}}}";
         return "{\""+supervisor+"\":{\""+employee+"\":{}}}";
     }
 }
