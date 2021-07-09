@@ -13,4 +13,5 @@ public class ApplicationConfiguration {
     }
     @Bean
     public EmployeeSupervisorParser employeeSupervisorParser() { return new EmployeeSupervisorParser(); }
+
 }

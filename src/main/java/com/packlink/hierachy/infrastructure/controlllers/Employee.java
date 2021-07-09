@@ -1,5 +1,6 @@
 package com.packlink.hierachy.infrastructure.controlllers;
 import com.packlink.hierachy.domain.primary.HierarchyUseCase;
+import com.packlink.hierachy.domain.repositories.EmployeeSupervisorRepository;
 import com.packlink.hierachy.infrastructure.EmployeeSupervisorParser;
 import com.packlink.hierachy.infrastructure.HierarchyEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +18,18 @@ public class Employee {
     private final HierarchyEncoder hierarchyEncoder = new HierarchyEncoder();
 
     @Autowired
-    public Employee(HierarchyUseCase useCase, EmployeeSupervisorParser employeeSupervisorParser) {
+    private EmployeeSupervisorRepository repository;
+
+    @Autowired
+    public Employee(HierarchyUseCase useCase, EmployeeSupervisorParser employeeSupervisorParser, EmployeeSupervisorRepository repository) {
         this.useCase = useCase;
         this.employeeSupervisorParser = employeeSupervisorParser;
+        this.repository = repository;
     }
 
     @PostMapping("/hierarchy")
     public String create(@RequestBody Map<String, String> hierarchy){
-        return hierarchyEncoder.toJson(useCase.getHierarchy(employeeSupervisorParser.toEmployeeSupervisor(hierarchy)));
+        return hierarchyEncoder.toJson(useCase.getHierarchy(employeeSupervisorParser.toEmployeeSupervisor(hierarchy), repository));
     }
 
     @GetMapping("/")
